@@ -21,7 +21,7 @@ export default function Home() {
     setTailoredLatex("");
 
     try {
-      const response = await fetch("/api/tailor", {
+      const response = await fetch("http://localhost:8000/tailor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
