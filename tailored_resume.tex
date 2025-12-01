@@ -1,0 +1,245 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    {\Huge \scshape Milan Ramdhari} \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ +1 650-307-3592 ~ \href{mailto:milanramdhari45@vt.edu}{\raisebox{-0.2\height}\faEnvelope\  \underline{milanramdhari45@vt.edu}} ~ 
+    \href{https://linkedin.com/in/milanramdhari/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/milanramdhari}}  ~
+    % \href{https://github.com/milanramdhari}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/milanramdhari}}
+    \vspace{-8pt}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Virginia Polytechnic Institute and State University (Virginia Tech)}{August 2022 -- May 2026}
+      {Bachelor of Science in Computer Science, Minor in Mathematics}{Blacksburg, VA}
+  \resumeSubHeadingListEnd
+
+%------RELEVANT COURSEWORK-------
+\section{Relevant Coursework}
+    \small
+    Data Structures and Algorithms, Machine Learning, Software Design, Computer Vision, Deep Learning, Computer Organization, Computer Systems, Applied Combinatorics, Statistics, Linear Algebra, Discrete Math
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Software Engineering Intern}{June 2025 -- November 2025}
+      {Viven.ai}{Santa Clara, CA}
+      \resumeItemListStart
+        \resumeItem{Developed and maintained backend services for a conversational AI knowledge bot using Python, Next.js, TypeScript, React, DynamoDB, S3, gRPC, and Redis.}
+        \resumeItem{Implemented REST APIs in Next.js and integrated Python Flask services for RAG queries, enabling automated email delivery of chat responses via AWS SES.}
+         \resumeItem{Designed and implemented scheduling workflows to automate timely message delivery and trigger system events, improving user engagement.}
+         \resumeItem{Contributed to the development of a real-time call agent leveraging Twilio, OpenAI, and WebSockets to enable live interactive sessions.}
+         \resumeItem{Developed automated end-to-end testing using Playwright, building the entire E2E framework from scratch and implementing 150+ fully automated test scenarios.}
+      \resumeItemListEnd
+      \vspace{6pt}
+
+
+      \resumeSubheading
+        {Undergraduate Teaching Assistant - Data Structures and Algorithms}{July 2025 -- September 2025}
+        {Virginia Tech}{Blacksburg, VA}
+        \resumeItemListStart
+        \resumeItem{Assisted in teaching core data structures concepts, including linked lists, stacks, queues, trees, and graphs.}
+        \resumeItem{Hosted weekly office hours, providing one-on-one guidance and support to over 100 students.}
+        \resumeItem{Graded assignments and projects, ensuring consistent application of grading rubrics and providing constructive feedback.}
+    \resumeItemListEnd
+    \vspace{6pt}
+
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- June 2023}
+      {Trademo Inc.}{Gurugram, HR}
+      \resumeItemListStart
+        \resumeItem{Developed a Python-based data pipeline using NumPy and Pandas to ingest and process Mexico’s trade data into the company database.}
+        \resumeItem{Contributed to expanding the Trademo Database by transforming and validating existing trade data.}
+        \resumeItem{Utilized data analysis skills to ensure data integrity and accuracy within the database.}
+    \resumeItemListEnd
+\vspace{6pt}
+
+    \resumeSubheading
+      {Volunteer Software Developer}{ April 2022 -- June 2022}
+      {Sitare Foundation}{Gurugram, HR}
+      \resumeItemListStart
+        \resumeItem{Collaborated within a team of 4 students to design and develop a note-sharing platform using HTML, Bootstrap, and PHP.}
+        \resumeItem{Conducted SQL testing to ensure efficient database handling, maintaining data integrity under high data loads.}
+    \resumeItemListEnd
+    \vspace{6pt}
+
+    
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {StudentStash}{July 2024 -- August 2024}
+  {}{}
+\vspace{-4ex} % Adjust this value if needed
+\resumeItemListStart
+  \resumeItem{Co-developed StudentStash, a marketplace for college students, using React.js and Node.js, focusing on a user-friendly GUI.}
+  \resumeItem{Optimized platform performance and enhanced user interface and core functionalities to improve user experience.}
+  \resumeItem{Secured user passwords and sensitive information using bcrypt.js, ensuring robust data protection.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+%
+
+%-----------PROJECTS-----------
+\section{Leadership}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {GenOne Mentor}{June 2023 -- May 2024}
+  {Virginia Tech}{Blacksburg, VA}
+\resumeItemListStart
+  \resumeItem{Mentored 30 first-generation freshmen through one-on-one and group sessions, fostering their integration into university life.}
+  \resumeItem{Tracked student progress and provided personalized support to promote academic success and personal development, improving student retention.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C++, TypeScript, Java, C, JavaScript, Assembly, PHP, SQL} \\
+     \textbf{Frameworks}{: Flask, Next.js, React.js, Node.js, Bootstrap, Microsoft Foundation Classes} \\
+     \textbf{Developer Tools}{: Git, AWS SES, DynamoDB, OpenSearch, Redis, Pytest, Pylint, MATLAB, MySQL, Playwright, CI/CD, Team Foundation Server} \\
+     \textbf{Operating Systems}{: Windows 11, Ubuntu} \\
+     \textbf{Libraries}{: Zod, tRPC, NumPy, Pandas, Scikit-learn} \\
+    }}
+ \end{itemize}
+
+
+%-----------AWARDS---------------
+% \section{Awards}
+% \begin{itemize}[leftmargin=*]
+%   \item \textbf{Sitare Foundation Scholarship}: 
+%   Awarded Sitare Foundation Scholarship for free education in middle and high school. This scholarship is provided to underprivileged students demonstrating outstanding academic achievements.
+% \end{itemize}
+
+\end{document}
