@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ReactDiffViewer, { DiffMethod } from "react-diff-viewer-continued";
 
 export default function Home() {
   const [resumeLatex, setResumeLatex] = useState("");
@@ -8,6 +9,7 @@ export default function Home() {
   const [tailoredLatex, setTailoredLatex] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showDiff, setShowDiff] = useState(false);
 
   const handleTailor = async () => {
     if (!resumeLatex || !jobDescription) {
@@ -42,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-8 bg-gray-50 text-gray-900 font-sans">
+    <main className="min-h-screen p-8 bg-gray-50 text-gray-900 font-sans relative">
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-blue-600 mb-2">Resume Tailor Agent</h1>
         <p className="text-gray-600">Tailor your LaTeX resume to any job description using AI.</p>
@@ -103,14 +105,24 @@ export default function Home() {
                 <span className="bg-green-100 text-green-600 py-1 px-3 rounded-full text-sm">3</span>
                 Tailored Result
               </h2>
-              {tailoredLatex && (
-                <button
-                  onClick={() => navigator.clipboard.writeText(tailoredLatex)}
-                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  Copy to Clipboard
-                </button>
-              )}
+              <div className="flex gap-2">
+                {tailoredLatex && (
+                  <>
+                    <button
+                      onClick={() => setShowDiff(true)}
+                      className="text-sm bg-purple-100 text-purple-700 hover:bg-purple-200 py-1 px-3 rounded-md font-medium transition-colors"
+                    >
+                      Preview Changes
+                    </button>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(tailoredLatex)}
+                      className="text-sm bg-gray-100 text-gray-700 hover:bg-gray-200 py-1 px-3 rounded-md font-medium transition-colors"
+                    >
+                      Copy Code
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
             <textarea
               readOnly
@@ -121,6 +133,49 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Diff Modal */}
+      {showDiff && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-7xl h-[90vh] flex flex-col overflow-hidden">
+            <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+              <h3 className="text-xl font-bold text-gray-800">Changes Preview</h3>
+              <button
+                onClick={() => setShowDiff(false)}
+                className="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-200 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-grow overflow-auto p-4 bg-white">
+              <ReactDiffViewer
+                oldValue={resumeLatex}
+                newValue={tailoredLatex}
+                splitView={true}
+                compareMethod={DiffMethod.WORDS}
+                styles={{
+                  variables: {
+                    light: {
+                      diffViewerBackground: '#fff',
+                      diffViewerTitleBackground: '#f8f8f8',
+                      gutterBackground: '#f8f8f8',
+                      gutterBackgroundDark: '#f3f1f1',
+                      addedBackground: '#e6ffec',
+                      addedGutterBackground: '#cdffd8',
+                      removedBackground: '#ffebe9',
+                      removedGutterBackground: '#ffd7d5',
+                      wordAddedBackground: '#acf2bd',
+                      wordRemovedBackground: '#fdb8c0',
+                    }
+                  }
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
