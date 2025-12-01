@@ -1,19 +1,26 @@
-import typer
+"""
+Debug script for Typer CLI argument parsing.
+"""
+
 from pathlib import Path
+import typer
 
 app = typer.Typer()
 
 @app.command()
-def tailor(
-    resume: Path = typer.Option(..., help="Path to resume"),
-    job_desc: Path = typer.Option(..., help="Path to job desc"),
-    output: Path = typer.Option(..., help="Path to output"),
-    api_key: str = typer.Option(None, envvar="GEMINI_API_KEY")
+def main(
+    name: str = typer.Option(..., help="Name to greet"),
+    age: int = typer.Option(None, help="Age of the person"),
+    file: Path = typer.Option(None, help="A file path")
 ):
-    print(f"Resume: {resume}")
-    print(f"Job Desc: {job_desc}")
-    print(f"Output: {output}")
-    print(f"API Key: {api_key}")
+    """
+    A simple debug command.
+    """
+    print(f"Hello {name}")
+    if age:
+        print(f"You are {age} years old")
+    if file:
+        print(f"File path: {file}")
 
 if __name__ == "__main__":
     app()

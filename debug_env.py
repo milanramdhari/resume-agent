@@ -1,17 +1,21 @@
+"""
+Debug script to check environment variables and Gemini API connection.
+"""
+
 import os
-from dotenv import load_dotenv
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 load_dotenv()
 
-key = os.getenv("GEMINI_API_KEY")
-print(f"Key loaded: {bool(key)}")
-if key:
-    print(f"Key starts with: {key[:4]}...")
+api_key = os.getenv("GEMINI_API_KEY")
+print(f"API Key found: {bool(api_key)}")
 
-try:
-    genai.configure(api_key=key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
-    print("Model initialized successfully.")
-except Exception as e:
-    print(f"Error initializing model: {e}")
+if api_key:
+    try:
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content("Hello, are you working?")
+        print(f"Gemini Response: {response.text}")
+    except Exception as e: # pylint: disable=broad-exception-caught
+        print(f"Error connecting to Gemini: {e}")

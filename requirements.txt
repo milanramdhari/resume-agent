@@ -3,3 +3,4 @@ python-dotenv
 typer
 rich
 pytest
+pylint
