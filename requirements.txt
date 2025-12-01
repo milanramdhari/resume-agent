@@ -4,3 +4,5 @@ typer
 rich
 pytest
 pylint
+fastapi
+uvicorn
