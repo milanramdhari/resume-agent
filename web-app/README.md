@@ -2,19 +2,26 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+To run the app locally you need **both** the API and the frontend.
+
+**1. Start the API** (from the repo root, with your venv activated):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd /path/to/resume-agent
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python api.py
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Keep this running (API at http://localhost:8000).
+
+**2. Start the frontend** (from the `web-app` directory):
+
+```bash
+cd web-app
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser. The tailor feature calls the API at http://localhost:8000/tailor.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

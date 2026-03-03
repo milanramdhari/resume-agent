@@ -9,7 +9,7 @@ class ResumeTailor:
     """
     A class to interact with Google Gemini API for tailoring resumes.
     """
-    def __init__(self, api_key: str = None):
+    def __init__(self, api_key: str = None, model: str = None):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
         if not self.api_key:
             raise ValueError(
@@ -18,7 +18,8 @@ class ResumeTailor:
             )
 
         genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-2.0-flash')
+        self.model_name = model or os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        self.model = genai.GenerativeModel(self.model_name)
 
     def tailor(self, resume_latex: str, job_description: str) -> str:
         """

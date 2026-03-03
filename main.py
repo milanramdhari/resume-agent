@@ -5,14 +5,16 @@ CLI entry point for the Resume Tailor Agent.
 from pathlib import Path
 import typer
 from rich.console import Console
+from dotenv import load_dotenv
 from resume_tailor import ResumeTailor
 
 console = Console()
+load_dotenv()
 
 def tailor(
     resume: Path = typer.Option(..., help="Path to the input LaTeX resume file"),
     job_desc: Path = typer.Option(..., help="Path to the job description text file"),
-    output: Path = typer.Option(..., help="Path to save the tailored LaTeX resume"),
+    output: Path = typer.Option("tailored_resume.tex", help="Path to save the tailored LaTeX resume"),
     api_key: str = typer.Option(None, envvar="GEMINI_API_KEY", help="Gemini API Key")
 ):
     """
