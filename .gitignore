@@ -36,6 +36,7 @@ yarn-error.log*
 
 # Env files (can opt-in if needed)
 .env*
+!web-app/.env.local.example
 
 # Vercel
 .vercel

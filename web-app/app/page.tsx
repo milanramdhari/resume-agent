@@ -20,8 +20,10 @@ export default function Home() {
     setError("");
     setTailoredLatex("");
 
+    const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+
     try {
-      const response = await fetch("http://localhost:8000/tailor", {
+      const response = await fetch(`${apiBase}/tailor`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +34,7 @@ export default function Home() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Something went wrong");
+        throw new Error(data.detail || data.error || "Something went wrong");
       }
 
       setTailoredLatex(data.tailoredLatex);

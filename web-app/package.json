@@ -12,7 +12,7 @@
     "@google/generative-ai": "^0.24.1",
     "next": "^16.1.6",
     "react": "19.2.0",
-    "react-diff-viewer-continued": "^3.4.0",
+    "react-diff-viewer-continued": "^4.2.2",
     "react-dom": "19.2.0"
   },
   "devDependencies": {
