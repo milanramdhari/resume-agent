@@ -5,6 +5,7 @@ import ReactDiffViewer, { DiffMethod } from "react-diff-viewer-continued";
 
 export default function Home() {
   const [resumeLatex, setResumeLatex] = useState("");
+  const [resumeFileName, setResumeFileName] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [tailoredLatex, setTailoredLatex] = useState("");
   const [loading, setLoading] = useState(false);
@@ -58,14 +59,47 @@ export default function Home() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <span className="bg-blue-100 text-blue-600 py-1 px-3 rounded-full text-sm">1</span>
-              Resume LaTeX
+              Resume LaTeX File
             </h2>
-            <textarea
-              className="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
-              placeholder="\documentclass{article}..."
-              value={resumeLatex}
-              onChange={(e) => setResumeLatex(e.target.value)}
-            />
+            {resumeFileName ? (
+              <div className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span className="text-sm font-medium text-blue-700 truncate">{resumeFileName}</span>
+                </div>
+                <button
+                  onClick={() => { setResumeLatex(""); setResumeFileName(""); }}
+                  className="ml-4 text-blue-400 hover:text-blue-600 shrink-0"
+                  aria-label="Remove file"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <label className="flex flex-col items-center justify-center h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+                <span className="text-sm text-gray-500">Click to upload your <span className="font-medium text-blue-600">.tex</span> file</span>
+                <input
+                  type="file"
+                  accept=".tex,.txt"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    setResumeFileName(file.name);
+                    const reader = new FileReader();
+                    reader.onload = (ev) => setResumeLatex(ev.target?.result as string);
+                    reader.readAsText(file);
+                  }}
+                />
+              </label>
+            )}
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
