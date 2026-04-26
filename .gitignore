@@ -48,6 +48,7 @@ web-app/next-env.d.ts
 CLAUDE.md
 
 # Test artifacts
-test_tailored_resume.tex
 test_job.txt
-test_resume.tex
+
+# LaTeX files (resumes, generated outputs, etc.)
+*.tex
